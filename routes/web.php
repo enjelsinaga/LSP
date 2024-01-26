@@ -32,11 +32,11 @@ Route::get('/jquery', function (){
 
 //Route::Resource('/formulir', App\Http\Controllers\FormulirController::class);
 
-Route::resource('/guru1',\App\Http\Controllers\GuruSLBController::class);
+Route::Resource('/guru1',\App\Http\Controllers\GuruSLBController::class);
 //Auth::routes();
 Route::Resource('/siswa', App\Http\Controllers\SiswaController::class);
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::Resource('users', App\Http\Controllers\UserController::class);
 Route::Resource('/data_pelajaran', App\Http\Controllers\DataPelajaran::class);
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);

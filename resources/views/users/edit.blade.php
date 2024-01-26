@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data User</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://yt3.googleusercontent.com/ReuxUblXnAhK02GUQyyryy3Qn9uwnvloquNYfEciJ7-J9bnmuaKE0N1OjLtdUQgyo6tp52BFXQ=s176-c-k-c0x00ffffff-no-rj">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
+    <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="./vendor/chartist/css/chartist.min.css">
+    <link href="./vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+    <!-- Datatable -->
+    <link href="./vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link href="./css/style.css" rel="stylesheet">
+    {{-- Alert --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+    {{-- Icon --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <style>
+        table, th, td {
+            border: 1px solid white;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th, td {
+            background-color: #9dc183;
+            color: #000000;
+        }
+
+        /* Style the sidebar - fixed full height */
+        .sidebar {
+            height: 100%;
+            width: 300px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 16px;
+        }
+
+        /* Style sidebar links */
+        .sidebar a {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+        }
+
+        /* Style links on mouse-over */
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        /* Style the main content */
+        .main {
+            margin-left: 160px;
+            padding: 0px 10px;
+        }
+
+        /* Add media queries for small screens (when the height of the screen is less than 450px,
+           add a smaller padding and font-size) */
+        @media screen and (max-height: 450px) {
+            .sidebar { padding-top: 15px; }
+            .sidebar a { font-size: 18px; }
+        }
+
+        body {
+            background: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .navbar {
+            background-color: #9dc183;
+            color: #ffffff !important;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            font-size: 24px;
+        }
+
+        .navbar-toggler-icon {
+            background-color: #ffffff;
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            color: #ffffff !important;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #ffffff;
+            background-color: #6c757d;
+        }
+
+        .sidebar {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 15px;
+            height: 100vh;
+        }
+
+        .sidebar a {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th,
+        .table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .table th {
+            background-color: #9dc183;
+            color: #ffffff;
+        }
+
+        .table tbody tr {
+            transition: background-color 0.3s;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        table.dataTable thead .sorting:after,
+        table.dataTable thead .sorting:before,
+        table.dataTable thead .sorting_asc:after,
+        table.dataTable thead .sorting_asc:before,
+        table.dataTable thead .sorting_asc_disabled:after,
+        table.dataTable thead .sorting_asc_disabled:before,
+        table.dataTable thead .sorting_desc:after,
+        table.dataTable thead .sorting_desc:before,
+        table.dataTable thead .sorting_desc_disabled:after,
+        table.dataTable thead .sorting_desc_disabled:before {
+            bottom: .5em;
+        }
+    </style>
+</head>
+
+<!-- <body style="background: lightgray">
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+    </nav>
+
+    <div class="row">
+    
+        <nav class="col-md-2 d-none d-md-block sidebar">
+            
+        </nav> -->
+
+
+<body style="background: lightgray">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-chalkboard-teacher mr-2"></i>
+            DATA USERS
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Tautan Logout dipindahkan ke sidebar -->
+        </div>
+    </nav>
+
+    <div class="row">
+    <nav class="col-md-2 d-none d-md-block sidebar" style="background-color: #343a40; color: #ffffff; height: 100vh; overflow-y: auto;">
+    <div class="sidebar">
+        <!-- Tambahkan style untuk membuat sidebar memanjang -->
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                        
+                        </li>
+                        @if(auth()->user()->role !== 'guru')
+                <div class="text-white p-3 mb-2 text-center">
+                    <h4 class="text-white font-weight-bold">Admin</h4>
+                </div>
+
+            <li class="nav-item">
+
+                        <a class="nav-link" href="{{ route('guru1.index') }}">
+                            <div class="border rounded bg-dark text-white p-2 mb-2">
+                                <i class="fas fa-database"></i> Data Guru SLB Melati
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('siswa.index') }}">
+                            <div class="border rounded bg-dark text-white p-2 mb-2">
+                                <i class="fas fa-database"></i> Data Siswa SLB Melati
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('data_pelajaran.index') }}">
+                            <div class="border rounded bg-dark text-white p-2 mb-2">
+                                <i class="fas fa-book"></i> Data Pelajaran
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('users.index') }}">
+                            <div class="border rounded bg-dark text-white p-2 mb-2">
+                            <i class="fas fa-user"></i> Kelola Users
+                            </div>
+                        </a>
+                    </li>
+@elseif(auth()->user()->role=('guru'))
+<div class="text-white p-3 mb-2 text-center">
+                    <h3 class="text-white font-weight-bold">Guru</h3>
+                </div>
+                <li class="nav-item">
+                        <a class="nav-link" href="{{ route('siswa.index') }}">
+                            <div class="border rounded bg-dark text-white p-2 mb-2">
+                                <i class="fas fa-database"></i> Data Siswa SLB Melati
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('data_pelajaran.index') }}">
+                            <div class="border rounded bg-dark text-white p-2 mb-2">
+                                <i class="fas fa-book"></i> Data Pelajaran
+                            </div>
+                        </a>
+                    </li>
+@endif
+
+                    <!-- Tambahkan tautan Logout di sini -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}">
+                            <div class="border rounded bg-dark text-white p-2 mb-2">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="container mt-5">
+            <div class="row">
+                    <div class="col-md-12">
+                        
+                        <div class="card border-0 shadow rounded">
+                            <div class="card-body">
+                        <form action="{{ route('users.update', $data->id) }}" method="post">
+
+                            @csrf
+                            @method('PUT')
+                            <div class="form-group">
+                                <label class="font-weight-bold">Nama</label>
+                                <input type="varchar" class="form-control @error('name') is-invalid @enderror"
+                                    name="name" placeholder="Nama User" value="{{ $data->name }}">
+                                @error('name')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-bold">Email</label>
+                                <input type="varchar" class="form-control @error('email') is-invalid @enderror"
+                                    name="email" placeholder="Email User" value="{{ $data->email }}">
+                                @error('email')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="font-weight-bold">Role</label>
+                                <select name="role" class="form-control @error('role') is-invalid @enderror">
+                                    <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                                    <option value="guru" {{ old('role') == 'guru' ? 'selected' : '' }}>Guru</option>
+                                </select>
+                                @error('role')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>  
+                            <div class="text-left">
+                                <button type="submit" class="btn btn-primary float-left">
+                                    <i class="fas fa-save mr-2"></i> Update
+                                </button>
+                                
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Scripts section -->
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include other scripts as needed -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Add other script tags as needed -->
+
+    <script>
+        // Message with toastr
+        @if(session()-> has('success'))
+        toastr.success('{{ session('success ') }}', 'BERHASIL!');
+        @elseif(session()-> has('error'))
+        toastr.error('{{ session('error ') }}', 'GAGAL!');
+        @endif
+    </script>
+</body>
+</html>

@@ -9,11 +9,13 @@ use DB;
 
 class DataPelajaran extends Controller
 {
+    
 
-    public function index()
+    public function index(Request $request)
     {
         $data = DB::select(DB::raw("SELECT * FROM data_pelajaran"));
         return view('data_pelajaran.index', compact('data'));
+        
     }
 
     public function create()
@@ -27,7 +29,7 @@ class DataPelajaran extends Controller
             'nama_pelajaran' => 'required',
             'kelas_ajaran' => 'required',
             'pengajar' => 'required',
-            'periode_ajaran' => 'required'
+            'periode_ajaran' => 'required',
         ]);
 
         DB::insert("INSERT INTO `data_pelajaran` (`id`, `nama_pelajaran`, `kelas_ajaran`, `pengajar`, `periode_ajaran`) VALUES (uuid(), ?, ?, ?, ?)",

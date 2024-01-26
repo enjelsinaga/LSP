@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Registrasi Pengguna</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://yt3.googleusercontent.com/ReuxUblXnAhK02GUQyyryy3Qn9uwnvloquNYfEciJ7-J9bnmuaKE0N1OjLtdUQgyo6tp52BFXQ=s176-c-k-c0x00ffffff-no-rj">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
