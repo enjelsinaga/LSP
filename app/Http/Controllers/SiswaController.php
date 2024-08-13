@@ -35,6 +35,7 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
+        // memberi data 
         $this->validate($request, [
             'nama' => 'required',
             'kelas' => 'required',
